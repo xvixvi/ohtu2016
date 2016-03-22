@@ -16,7 +16,7 @@ public class Kirjanpito {
     
     private ArrayList<String> tapahtumat;
 
-    public Kirjanpito() {
+    private Kirjanpito() {
         tapahtumat = new ArrayList<String>();
     }
     
