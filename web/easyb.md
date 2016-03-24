@@ -83,11 +83,9 @@ Kun suoritamme testit komennolla <code>mvn integration-test</code> tulee tuloste
 
 Kaiken tekstin seasta nähdään, että easyB on ajanut kahteen User Storyyn liittyvät testit eli skenaariot. Virheitä ei ole mutta muutamat storyt ovat "Pending".
 
-**HUOM1:** testien suoritus saattaa aiheuttaa "aiheettoman" virheilmoituksen _java.lang.StringIndexOutOfBoundsException: String index out of range: 1_. Testit ovat siitä huolimatta suoritettu onnistuneesti, jos tuloksena on _BUILD SUCCESS_ ja kohdissa _Scenarios run:_ ei ole raportoitu virheistä.
-
 Jos testit eivät mene läpi, nähdään ikävämpää tekstiä.
 
-**HUOM2:** jos testit eivät mene läpi **lue koko virheilmoitus**, ongelmasta kertovat oleelliset asiat löytyvät virheilmoituksen seasta.
+**HUOM:** jos testit eivät mene läpi **lue koko virheilmoitus**, ongelmasta kertovat oleelliset asiat löytyvät virheilmoituksen seasta.
 
 easyB:n konfiguraatiossa sanoimme, että testien tulokset tulee raportoida html-muodossa tiedostossa _target/easyb/easyb-report.html_
 
@@ -232,6 +230,8 @@ Lisää should:ista löytyy easyB:n sivulta, mm. [http://www.easyb.org/dsls.html
 NetBeans ei osaa tehdä minkäänlaista syntaksitarkastusta _.story_-päätteisille tiedostoille. Jos asennat NB:hen Groovy and Grails -pluginin (ks. tools/plugins) _ja_ nimeät storytiedostot loppumaan päätteeseen _Story.groovy_ (esim. logging_in_Story.groovy, huomaa iso S!) saat NB:hen hieman paremman syntaksitarkastuksen. Tosin ihan ongelmaton syntaksitarkastus ei ole vaan se ilmoittaa aiheetomasti tiettyjen luokkien näkymättömyydestä:
 
 ![näkymä jossa NetBeans ilmoittaa aiheettomasti syntaksivirheistä](https://github.com/mluukkai/ohtu2016/raw/master/images/viikko3-2.png)
+
+Ikävä seuraus paremmasta syntaksitarkastuksesta (eli storyjen uudelleennimeämisestä groovy-päätteisiksi) on testien suorittamisen aiheuttama aiheeton virheilmoitus _java.lang.StringIndexOutOfBoundsException: String index out of range: 1_. Testit ovat virheilmoituksesta huolimatta suoritettu onnistuneesti, jos tuloksena on _BUILD SUCCESS_ ja kohdissa _Scenarios run:_ ei ole raportoitu virheistä.
 
 ## DAO-suunnittelumalli
 
