@@ -125,7 +125,7 @@ scenario "nonexistent user can not login to ", {
 
 Alussa on  __description__ eli Storyn kuvaus. Kyseessä on suunilleen sama asia, joka kirjoitetaan Storyä vastaavaan pahvikorttiin jos sellaiset ovat käytössä. Kuvaus voidaan antaa myös narrative-muodossa (as a... I want... so that), kuten linkitetyssä artikkelissa tehtiin.
 
-Kuvauksen jälkeen määritellään Storyn testit eli skenaariot. Skenaariot määritellään given... when... then -muotoisina testi-askelina:
+Kuvauksen jälkeen määritellään Storyn testit eli _skenaariot_. Skenaariot määritellään given... when... then -muotoisina testi-askelina:
 
 * given kuvaa testin alkutilanteen
 * when kuvaa toiminnon mitä testataan
@@ -190,11 +190,11 @@ Jos et jo niin tehnyt, kokeile ajaa ohjelmaa komentoriviltä ja tutustu sen rake
 * muistutus viikolta 1, maven-muotoisen ohjelman suoritus tapahtuu komennolla <code>mvn exec:java -Dexec.mainClass=ohtu.App</code>
 * jos olet muuttanut koodia, tulee se myös kääntää, eli antaa komento  <code>mvn compile exec:java -Dexec.mainClass=ohtu.App</code>
 
-Kuten huomaat, ohjelmassa hyödynnetään Dependency Injection:ia. Testattavuuden helpottamiseksi kommunikointi käyttäjän kanssa tehdään rajapinnan IO-kautta. Rajapinnalle on tehty kaksi toteutusta: ConsoleIO normaalikäyttöön ja StubIO testeille. StubIO:lle annetean konstruktorissa syöterivit jotka "käyttäjä" ohjelmalle syöttää. StubIO-oliolta saa pyydettyä listan ohjelman tulosteista metodilla getPrints().
+Kuten huomaat, ohjelmassa hyödynnetään [riippuvuuksien injektointia](https://github.com/mluukkai/ohtu2016/blob/master/web/riippuvuuksien_injektointi.md). Testattavuuden helpottamiseksi kommunikointi käyttäjän kanssa tehdään rajapinnan IO-kautta. Rajapinnalle on tehty kaksi toteutusta: ConsoleIO normaalikäyttöön ja StubIO testeille. StubIO:lle annetean konstruktorissa syöterivit jotka "käyttäjä" ohjelmalle syöttää. StubIO-oliolta saa pyydettyä listan ohjelman tulosteista metodilla getPrints().
 
 ## shouldHave ja muut toiminnallisuuden varmistavat komennot
 
-Yllä toiminnallisuus varmistettiin shouldHave-muotoisella komennolla:
+Yllä toiminnallisuus varmistettiin <code>shouldHave</code>-muotoisella komennolla:
 
 ``` java
 then 'user will be logged in to system', {
@@ -211,7 +211,7 @@ then 'user will be logged in to system', {
 }
 ```
 
-Komennoilla shoudHave ja shouldNotHave  testataan listan sisältöä. Yksittäistä arvoa voidaan testata esim. seuraavasti:
+Komennoilla <code>shoudHave</code> ja <code>shouldNotHave</code>  testataan listan sisältöä. Yksittäistä arvoa voidaan testata esim. seuraavasti:
 
 ``` java
    tulosteita = io.getPrints().length()
@@ -235,9 +235,9 @@ AuthenticationService-olio ei talleta suoraan User-oliota vaan epäsuorasti User
 
 DAO eli Data Access Object on yleisesti käytetty suunnittelumalli jonka avulla abstrahoidaan sovellukselta se miten oliot on talletettu, ks. [http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm](http://www.corej2eepatterns.com/Patterns2ndEd/DataAccessObject.htm)
 
-Ideana on, että sovellus "hakee" ja "tallettaa" User-oliot aina UserDAO-rajapinnan metodeja käyttäen. Sovellukselle on injektoitu konkreettinen toteutus, joka tallettaa oliot esim. tietokantaan tai tiedostoon. Se minne talletus tapahtuu on kuitenkin läpinäkyvää sovelluksen muiden osien kannalta.
+Ideana on, että sovellus "hakee" ja "tallettaa" User-oliot aina <code>UserDAO</code>-rajapinnan metodeja käyttäen. Sovellukselle on injektoitu konkreettinen toteutus, joka tallettaa oliot esim. tietokantaan tai tiedostoon. Se minne talletus tapahtuu on kuitenkin läpinäkyvää sovelluksen muiden osien kannalta.
 
-Ohjelmaamme on määritelty testauskäyttöön sopiva InMemoryUserDao, joka tallettaa User-oliot ainoastaan muistiin. Muu ohjelma säilyisi täysin muuttumattomana jos määriteltäisiin esim. MySQLUserDao joka hoitaa talletuksen tietokantaan ja injektoitaisiin tämä sovellukselle.
+Ohjelmaamme on määritelty testauskäyttöön sopiva <code>InMemoryUserDao</code>, joka tallettaa User-oliot ainoastaan muistiin. Muu ohjelma säilyisi täysin muuttumattomana jos määriteltäisiin esim. <code>MySQLUserDao</code> joka hoitaa talletuksen tietokantaan ja injektoitaisiin tämä sovellukselle.
 
 DAO-suunnittelumalli on oikeastaan sama asia mistä jotkut käyttävät nimitystä [data mapper](http://martinfowler.com/eaaCatalog/dataMapper.html)
 
