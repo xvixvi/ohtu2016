@@ -83,9 +83,11 @@ Kun suoritamme testit komennolla <code>mvn integration-test</code> tulee tuloste
 
 Kaiken tekstin seasta nähdään, että easyB on ajanut kahteen User Storyyn liittyvät testit eli skenaariot. Virheitä ei ole mutta muutamat storyt ovat "Pending".
 
+**HUOM1:** testien suoritus saattaa aiheuttaa "aiheettoman" virheilmoituksen _java.lang.StringIndexOutOfBoundsException: String index out of range: 1_. Testit ovat siitä huolimatta suoritettu onnistuneesti, jos tuloksena on _BUILD SUCCESS_ ja kohdissa _Scenarios run:_ ei ole raportoitu virheistä.
+
 Jos testit eivät mene läpi, nähdään ikävämpää tekstiä.
 
-**HUOM:** jos testit eivät mene läpi **lue koko virheilmoitus**, ongelmasta kertovat oleelliset asiat löytyvät virheilmoituksen seasta.
+**HUOM2:** jos testit eivät mene läpi **lue koko virheilmoitus**, ongelmasta kertovat oleelliset asiat löytyvät virheilmoituksen seasta.
 
 easyB:n konfiguraatiossa sanoimme, että testien tulokset tulee raportoida html-muodossa tiedostossa _target/easyb/easyb-report.html_
 
