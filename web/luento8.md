@@ -901,7 +901,7 @@ Luokkaa käytetään seuraavasti:
 
 ``` java
     public static void main(String[] args) {
-        String osoite = "http://www.gutenberg.myebook.bg/2/5/5/2554/2554-8.txt";
+        String osoite = http://www.gutenberg.org/cache/epub/5184/pg5184.txt";
         GutenbergLukija kirja = new GutenbergLukija(osoite);
 
         for( String rivi : kirja.rivitJoillaSana("beer") ) {
