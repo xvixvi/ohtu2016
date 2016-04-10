@@ -444,7 +444,7 @@ Tekniikka jolla koronmaksu hoidetaan on myöskin suunnittelumalli nimeltään *s
 
 ## Tilin luominen
 
-Loimme äsken luokalle Tili staattiset apumetodit tilien luomista varten. Voisi kuitenkin olla järkevämpää siirtää vastuu tilien luomisesta erillisen luokan, _pankin_ vastuulle. Pankki voi helposti hallinnoida myös tilinumeroiden generointia:
+Loimme äsken luokalle _Tili_ staattiset apumetodit tilien luomista varten. Voisi kuitenkin olla järkevämpää siirtää vastuu tilien luomisesta erillisen luokan, _pankin_ vastuulle. Pankki voi helposti hallinnoida myös tilinumeroiden generointia:
 
 ``` java
 public class Pankki {
@@ -455,19 +455,19 @@ public class Pankki {
         return "12345-"+numero;
     }
     
-    public  Tili kayttotili(String omistaja, double k){
+    public Tili kayttotili(String omistaja, double k){
         return new Tili(generoiTilinro(), omistaja, new Tasakorko(k));
     }
     
-    public  Tili maaraikaistili(String omistaja, double k){
+    public Tili maaraikaistili(String omistaja, double k){
         return new MaaraAikaisTili(generoiTilinro(), omistaja, new Tasakorko(k));
     }    
     
-    public  Tili euribortili(String tiliNumero, String omistaja, int kk){
+    public Tili euribortili(String tiliNumero, String omistaja, int kk){
         return new Tili(generoiTilinro(), omistaja, new EuriborKorko(kk));
     }        
 
-    public  Tili maaraaikaisEuribor(String tiliNumero, String omistaja, int kk){
+    public Tili maaraaikaisEuribor(String tiliNumero, String omistaja, int kk){
         return new MaaraAikaisTili(tiliNumero, omistaja, new EuriborKorko(kk));
     } 
 }
