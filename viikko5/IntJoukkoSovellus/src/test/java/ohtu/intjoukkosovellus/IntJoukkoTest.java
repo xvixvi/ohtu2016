@@ -74,4 +74,17 @@ public class IntJoukkoTest {
     public void toStringToimii(){
         assertEquals("{10, 3}", joukko.toString());
     }
+    
+    @Test
+    public void toStringToimiiYhdenKokoiselleJoukolla(){
+        joukko = new IntJoukko();
+        joukko.lisaa(1);
+        assertEquals("{1}", joukko.toString());
+    }
+
+    @Test
+    public void toStringToimiiTyhjallaJoukolla(){
+        joukko = new IntJoukko();
+        assertEquals("{}", joukko.toString());
+    }     
 }
