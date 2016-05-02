@@ -15,7 +15,8 @@ public class Tapahtumankuuntelija implements ActionListener {
     private JTextField tuloskentta;
     private JTextField syotekentta;
     private Sovelluslogiikka sovellus;
-    private HashMap<String, Komento> komennot;
+    private HashMap<JButton, Komento> komennot;
+    private Komento edellinen;
 
     public Tapahtumankuuntelija(JButton plus, JButton miinus, JButton nollaa, JButton undo, JTextField tuloskentta, JTextField syotekentta) {
         this.plus = plus;
@@ -25,91 +26,73 @@ public class Tapahtumankuuntelija implements ActionListener {
         this.tuloskentta = tuloskentta;
         this.syotekentta = syotekentta;
         this.sovellus = new Sovelluslogiikka();
-        komennot = new HashMap<String, Komento>();
-        komennot.put("plus", new Plus(sovellus));
-        komennot.put("miinus", new Miinus(sovellus));
-        komennot.put("nollaa", new Nollaa(sovellus));
-        komennot.put("tuntematon", new Tuntematon(sovellus));
+        komennot = new HashMap<>();
+        komennot.put(plus, new Plus(sovellus, syotekentta, tuloskentta));
+        komennot.put(miinus, new Miinus(sovellus, syotekentta, tuloskentta));
+        komennot.put(nollaa, new Nollaa(sovellus, syotekentta, tuloskentta));
+        edellinen = null;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        int arvo = 0;
 
-        try {
-            arvo = Integer.parseInt(syotekentta.getText());
-        } catch (Exception e) {
-            
+        Komento komento = komennot.get(ae.getSource());
+        if (komento != null) {
+            komento.suorita();
+            edellinen = komento;
+        } else {
+            // toiminto oli undo
+            edellinen.peru();
+            edellinen = null;
         }
-        Komento komento = komennot.get(ae);
-        if (komento == null) {
-            komento = komennot.get("tuntematon");
-        }
-        
-        komento.suorita(arvo);
 
         int laskunTulos = sovellus.tulos();
 
-        syotekentta.setText("");
-        tuloskentta.setText("" + laskunTulos);
         nollaa.setEnabled(laskunTulos != 0);
-        undo.setEnabled(true);
+        undo.setEnabled(edellinen != null);
     }
 
-    private static class Miinus implements Komento {
+    private class Miinus extends Komento {
 
-        private final Sovelluslogiikka sovellus;
-
-        public Miinus(Sovelluslogiikka sovellus) {
-            this.sovellus = sovellus;
+        private Miinus(Sovelluslogiikka sovellus, JTextField syotekentta, JTextField tulosField) {
+            super(sovellus, syotekentta, tulosField);
         }
 
         @Override
-        public void suorita(int arvo) {
-            sovellus.miinus(arvo);
+        public void suorita() {
+            setEdellinenTulos(sovellus.tulos());
+            sovellus.miinus(arvo());
+            super.suorita();
         }
     }
 
-    private static class Nollaa implements Komento {
+    private class Nollaa extends Komento {
 
-        private final Sovelluslogiikka sovellus;
-
-        public Nollaa(Sovelluslogiikka sovellus) {
-            this.sovellus = sovellus;
+        private Nollaa(Sovelluslogiikka sovellus, JTextField syotekentta, JTextField field) {
+            super(sovellus, syotekentta, field);
         }
 
         @Override
-        public void suorita(int arvo) {
+        public void suorita() {
+            setEdellinenTulos(sovellus.tulos());
+
             sovellus.nollaa();
+            super.suorita();
         }
     }
 
-    private static class Tuntematon implements Komento {
+    private class Plus extends Komento {
 
-        private final Sovelluslogiikka sovellus;
-
-        public Tuntematon(Sovelluslogiikka sovellus) {
-            this.sovellus = sovellus;
+        public Plus(Sovelluslogiikka sovellus, JTextField field, JTextField field1) {
+            super(sovellus, field, field1);
         }
 
         @Override
-        public void suorita(int arvo) {
-            System.out.println("tuntematon komento");
+        public void suorita() {
+            setEdellinenTulos(sovellus.tulos());
+
+            sovellus.plus(arvo());
+            super.suorita();
         }
     }
-
-    private class Plus implements Komento {
-
-        private final Sovelluslogiikka sovellus;
-
-        public Plus(Sovelluslogiikka sovellus) {
-            this.sovellus = sovellus;
-        }
-
-        @Override
-        public void suorita(int arvo) {
-            sovellus.plus(arvo);
-        }
-    }
-
 }
