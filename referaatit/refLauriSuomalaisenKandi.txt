@@ -1,0 +1,7 @@
+﻿Referaatti Lauri Suomalaisen kandityöstä: Ohjelmistotuotantomenetelmien kehittyminen 1950-luvulta nykypäivään
+
+Kandidaatin työssään Suomalainen esittelee ohjelmistotuotantomenetelmiin liittyvät peruskäsitteet ja esittelee perinteisiä menetelmiä, inkrementaalisia ja iteratiivisia menetelmiä sekä ketteriä menetelmiä.
+
+Ennen yhdeksänkymmentälukua suurin osa ohjelmistoista tehtiin käyttäen vesiputousmallia, jossa projekti eteni lineaarisesti suunnittelusta ja sopimisesta toteutukseen ja testaamiseen. Ennen pitkään huomattiin, että menetelmä oli erittäin jäykkä ja dokumentointi tässä muodossa työlästä. Ratkaisuna vesiputousmallin ongelmiin kehitettiin inkrementaalisia ja iteratiivisia malleja, jotka hyödynsivät Suomisen mukaan ”aikaan sidottuja iteraatioita, evolutiivista kehittämistä ja palautteen mukaan ohjautuvaa kehittämistä”.
+
+2000-Luvun keskeisimpien ohjelmistotuotantotrendien kattotermi ketterät menetelmät (Agile Methods) syntyi vastareaktiona aiempien menetelmien vaatimus- ja suunnitelmapainoitteisuudelle. Näistä menetelmistä Suomalainen mainitsee erikseen Scrumin, jonka ytimessä ovat aikaan sidotut iteraatiot, sprintit.

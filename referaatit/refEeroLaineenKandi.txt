@@ -1,0 +1,6 @@
+﻿Referaatti Eero-Veikko Laineen kandityöstä:
+Johtaminen perinteisissä ja ketterissä ohjelmistoprojekteissa
+
+Kandidaatintyössään Eero Laine tutkii johtajan roolia, ominaisuuksia ja johtamistyylejä erilaisissa ohjelmistotuotantomenetelmissä.
+
+Johtajalta vaaditaan sekä teknistä osaamista että vuorovaikutustaitoja. Perinteisissä ohjelmistotuotantomenetelmissä johtajan tehtävänä on ollut muodostaa näkemys ja strategia sekä varmistaa johdettavan yksikön pysyminen aikataulussa. Nykyaikaisempien ketterillä menetelmillä toteutetuissa projekteissa johtajan rooli on varmistaa, että tiimillä on kaikki edellytykset työskennellä optimaalisesti. Työn suunnittelu ja johtaminen tehdään yhdessä tiimin kesken.
